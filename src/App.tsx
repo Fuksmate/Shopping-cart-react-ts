@@ -57,6 +57,7 @@ const App = () => {
   const handleRemoveFromCart = (id: number) => {
     setCartItems(prev =>
       prev.reduce((ack, item) => {
+        
         if (item.id === id) {
           if (item.amount === 1) return ack;
           return [...ack, { ...item, amount: item.amount - 1 }];
@@ -68,7 +69,7 @@ const App = () => {
   };
 
   if (isLoading) return <LinearProgress />;
-  if (error) return <div>Something went wrong ...</div>;
+  if (error) return <div>Coś poszło  nie tak...</div>;
 
   return (
     <Wrapper>
@@ -84,7 +85,7 @@ const App = () => {
           <AddShoppingCartIcon />
         </Badge>
       </StyledButton>
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         {data?.map(item => (
           <Grid item key={item.id} xs={12} sm={4}>
             <Item item={item} handleAddToCart={handleAddToCart} />
